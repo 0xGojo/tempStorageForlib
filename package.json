@@ -1,0 +1,13 @@
+{
+  "name": "Project1",
+  "version": "0.0.1",
+  "dependencies": {
+    "cron": "^1.3.0",
+    "ethereumjs-tx": "^1.3.3",
+    "ethereumjs-util": "^5.1.2",
+    "keythereum": "^1.0.2",
+    "pm2": "^2.8.0",
+    "util": "^0.10.3",
+    "web3": "^0.20.2"
+  }
+}
