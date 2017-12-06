@@ -112,7 +112,7 @@ function cronJob(wallet){
         onTick: function () {
             try {
                     getTokenBalance(wallet.address).then(function (tokenBalance) {    
-                        console.log('balance token OMG of this account :' + tokenBalance / Math.pow(10, 18););
+                        console.log('balance token OMG of this account :' + tokenBalance / Math.pow(10, 18));
                     });
                     getBalance(wallet.address).then(function (Balance) {    
                         console.log('balance of this account :' + Balance / Math.pow(10, 18));
