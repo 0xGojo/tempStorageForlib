@@ -104,32 +104,51 @@ function sendEntireETH(fromAddress, privateKey, toAddress){
     return submitTransaction(signedTx);
 };
 
+function cronJob(wallet){
+
+    return new CronJob({
+        cronTime: '*/1 * * * *',
+
+        onTick: function () {
+            try {
+                    getTokenBalance(wallet.address).then(function (data) {
+                        // console.log(data.toNumber());
+                        if(data.toNumber() > 0){
+                             sendOMGToken(wallet.address, wallet.privateKey, config.receiverAddress, data)
+                                .then(
+                                    function (txHash) {
+                                        console.log('[HASH]: '+ new Date() +' transaction hash '+ txHash);
+                                        getTokenBalance(wallet.address).then(function (tokenBalance) {    
+                                        console.log('balance token OME of this account :' + tokenBalance);
+                                        });
+                                        getBalance(wallet.address).then(function (Balance) {    
+                                        console.log('balance of this account :' + Balance);
+                                        });
+                                    }   
+                                )
+                                .catch(
+                                    function (e) {
+                                        console.log('[ERRO]: ' + new Date()+' '+ 'send transaction error'+e.message.toString());
+                                    }
+                                )
+                        } else {
+                            console.log('[ERRO] :  your account shoulde has enough token to transfer');
+                        }
+                    });
+
+                } catch(e){
+                    console.log('[ERRO]: ' + new Date()+' '+ e.message.toString());
+                    throw new Error(e);
+                }
+
+        },
+
+        start: true
+    })
+};
 // run this to send token
 function sendToken(wallet){
-            try{
-                getTokenBalance(wallet.address).then(function (data) {
-                    // console.log(data.toNumber());
-                    if(data.toNumber() > config.value){
-                         sendOMGToken(wallet.address, wallet.privateKey, config.receiverAddress, config.value)
-                            .then(
-                                function (txHash) {
-                                    console.log('[HASH]: '+ new Date() +' transaction hash '+ txHash);
-                                }
-                            )
-                            .catch(
-                                function (e) {
-                                    console.log('[ERRO]: ' + new Date()+' '+ 'send transaction error'+e.message.toString());
-                                }
-                            )
-                    } else {
-                        console.log('[ERRO] :  your account shoulde has enough token to transfer');
-                    }
-                });
 
-            } catch(e){
-                console.log('[ERRO]: ' + new Date()+' '+ e.message.toString());
-                throw new Error(e);
-            }
 };
 
 function getTokenContractInstance() { 
@@ -158,7 +177,7 @@ function sendOMGToken(fromAddress, privateKey, toAddress, amount){
 };
 
 module.exports = {
-    sendToken: sendToken,
+    cronJob: cronJob,
     sendETH: sendETH,
     balance: getBalance
 }

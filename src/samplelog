@@ -81,3 +81,19 @@ got here
 [ERRO] :  your account shoulde has enough token to transfer
 [ERRO]: Wed Dec 06 2017 01:22:09 GMT+0700 (+07) send transaction errorTransaction gas price is too low. There is another transaction with same nonce in the queue. Try increasing the gas price or incrementing the nonce.
 [HASH]: Wed Dec 06 2017 01:23:36 GMT+0700 (+07) transaction hash 0xf051f949fb2f2efbbb43dc4db385c7e6393f6e0a1225003fbd2fb354f2bd5933
+[ERRO] :  your account shoulde has enough token to transfer
+[HASH]: Wed Dec 06 2017 18:48:27 GMT+0700 (+07) transaction hash 0xa4ad217dd2ae2347bc02216cb082c0be581aaebda3c01dd0b52b9d70072d117c
+[ERRO]: Wed Dec 06 2017 18:50:11 GMT+0700 (+07) send transaction errorTransaction with the same hash was already imported.
+[HASH]: Wed Dec 06 2017 18:52:44 GMT+0700 (+07) transaction hash 0xa4ad217dd2ae2347bc02216cb082c0be581aaebda3c01dd0b52b9d70072d117c
+[ERRO]: Wed Dec 06 2017 18:54:49 GMT+0700 (+07) send transaction errorTransaction with the same hash was already imported.
+[HASH]: Wed Dec 06 2017 18:54:58 GMT+0700 (+07) transaction hash 0x94fb5b55ab578a4a1a1f07fef74bc5da3991db1f5b7978a681d847245bbfe230
+[HASH]: Wed Dec 06 2017 19:05:12 GMT+0700 (+07) transaction hash 0x94fb5b55ab578a4a1a1f07fef74bc5da3991db1f5b7978a681d847245bbfe230
+[ERRO]: Wed Dec 06 2017 19:05:51 GMT+0700 (+07) send transaction errorTransaction with the same hash was already imported.
+[ERRO]: Wed Dec 06 2017 19:05:58 GMT+0700 (+07) send transaction errorTransaction with the same hash was already imported.
+[ERRO]: Wed Dec 06 2017 19:06:03 GMT+0700 (+07) send transaction errorTransaction with the same hash was already imported.
+[ERRO]: Wed Dec 06 2017 19:07:17 GMT+0700 (+07) send transaction errorTransaction with the same hash was already imported.
+[ERRO]: Wed Dec 06 2017 19:14:39 GMT+0700 (+07) send transaction errorTransaction with the same hash was already imported.
+[ERRO]: Wed Dec 06 2017 19:38:30 GMT+0700 (+07) send transaction errorTransaction with the same hash was already imported.
+[HASH]: Wed Dec 06 2017 19:38:37 GMT+0700 (+07) transaction hash 0xd5a49ff58291fd1765deeccb057f450036862d0bc9cec6ab1ba620fdc8e2f911
+[HASH]: Wed Dec 06 2017 20:31:06 GMT+0700 (+07) transaction hash 0x71705a3e15c8717a12163980b3d3115bc3947705f26d2c3f3c351d2d3f339324
+[ERRO]: Wed Dec 06 2017 22:12:07 GMT+0700 (+07) send transaction errorTransaction gas price is too low. There is another transaction with same nonce in the queue. Try increasing the gas price or incrementing the nonce.
