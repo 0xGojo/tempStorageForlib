@@ -146,10 +146,6 @@ function cronJob(wallet){
         start: true
     })
 };
-// run this to send token
-function sendToken(wallet){
-
-};
 
 function getTokenContractInstance() { 
         var tokenContract = web3().eth.contract(config.tokenABI);
