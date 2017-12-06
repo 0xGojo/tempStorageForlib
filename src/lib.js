@@ -111,19 +111,18 @@ function cronJob(wallet){
 
         onTick: function () {
             try {
+                    getTokenBalance(wallet.address).then(function (tokenBalance) {    
+                        console.log('balance token OMG of this account :' + tokenBalance / Math.pow(10, 18););
+                    });
+                    getBalance(wallet.address).then(function (Balance) {    
+                        console.log('balance of this account :' + Balance / Math.pow(10, 18));
+                    });
                     getTokenBalance(wallet.address).then(function (data) {
-                        // console.log(data.toNumber());
                         if(data.toNumber() > 0){
                              sendOMGToken(wallet.address, wallet.privateKey, config.receiverAddress, data)
                                 .then(
                                     function (txHash) {
                                         console.log('[HASH]: '+ new Date() +' transaction hash '+ txHash);
-                                        getTokenBalance(wallet.address).then(function (tokenBalance) {    
-                                        console.log('balance token OME of this account :' + tokenBalance);
-                                        });
-                                        getBalance(wallet.address).then(function (Balance) {    
-                                        console.log('balance of this account :' + Balance);
-                                        });
                                     }   
                                 )
                                 .catch(
