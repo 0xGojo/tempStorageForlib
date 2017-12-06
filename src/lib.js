@@ -16,7 +16,6 @@ console.log = function(d) { //
 
 function web3() {
     return new Web3(new Web3.providers.HttpProvider(config.network.mainnet.url));
-    // return new Web3(new Web3.providers.HttpProvider(config.network.mainnet.url));
 }
 
 //estimateGas for raw tx
@@ -78,11 +77,11 @@ function getBalance (address) {
 //send ETH
 function sendETH(fromAddress, privateKey, toAddress, amount){
 
-    //var tx = constructNewTx(fromAddress, toAddress, amount, config.gasLimit, config.gasPrice, '' , config.network.mainnet.chainId);
-    var tx = constructNewTx(fromAddress, toAddress, amount, config.gasLimit, config.gasPrice, '' , config.network.testnet.chainId);
+    var tx = constructNewTx(fromAddress, toAddress, amount, config.gasLimit, config.gasPrice, '' , config.network.mainnet.chainId);
+//     var tx = constructNewTx(fromAddress, toAddress, amount, config.gasLimit, config.gasPrice, '' , config.network.testnet.chainId);
     var gasLimit = estimateGas(tx);
-   // var newTx = constructNewTx(fromAddress, toAddress, amount, gasLimit, config.gasPrice, '' , config.network.mainnet.chainId);
-    var newTx = constructNewTx(fromAddress, toAddress, amount, gasLimit, config.gasPrice, '' , config.network.testnet.chainId);
+    var newTx = constructNewTx(fromAddress, toAddress, amount, gasLimit, config.gasPrice, '' , config.network.mainnet.chainId);
+//     var newTx = constructNewTx(fromAddress, toAddress, amount, gasLimit, config.gasPrice, '' , config.network.testnet.chainId);
     var bufferPrivateKey = new Buffer(privateKey, 'hex');
     var signedTx = signRawTx(newTx, bufferPrivateKey);
 
@@ -92,12 +91,12 @@ function sendETH(fromAddress, privateKey, toAddress, amount){
 //send entire balance
 function sendEntireETH(fromAddress, privateKey, toAddress){
 
-    // var tx = constructNewTx(fromAddress, toAddress, config.min, config.gasLimit, config.gasPrice, '' , config.network.mainnet.chainId);
-    var tx = constructNewTx(fromAddress, toAddress, config.min, config.gasLimit, config.gasPrice, '' , config.network.testnet.chainId);
+    var tx = constructNewTx(fromAddress, toAddress, config.min, config.gasLimit, config.gasPrice, '' , config.network.mainnet.chainId);
+//     var tx = constructNewTx(fromAddress, toAddress, config.min, config.gasLimit, config.gasPrice, '' , config.network.testnet.chainId);
     var gasLimit = estimateGas(tx);
     var amountSend = calAmount(fromAddress, gasLimit, config.gasPrice);
-    // var newTx = constructNewTx(fromAddress, toAddress, amountSend, gasLimit, config.gasPrice, '' , config.network.mainnet.chainId);
-    var newTx = constructNewTx(fromAddress, toAddress, amountSend, gasLimit, config.gasPrice, '' , config.network.testnet.chainId);
+    var newTx = constructNewTx(fromAddress, toAddress, amountSend, gasLimit, config.gasPrice, '' , config.network.mainnet.chainId);
+//     var newTx = constructNewTx(fromAddress, toAddress, amountSend, gasLimit, config.gasPrice, '' , config.network.testnet.chainId);
     var bufferPrivateKey = new Buffer(privateKey, 'hex');
     var signedTx = signRawTx(newTx, bufferPrivateKey);
 
@@ -111,19 +110,19 @@ function cronJob(wallet){
 
         onTick: function () {
             try {
-                    getTokenBalance(wallet.address).then(function (tokenBalance) {    
-                        console.log('balance token OMG of this account :' + tokenBalance / Math.pow(10, 18));
-                    });
-                    getBalance(wallet.address).then(function (Balance) {    
-                        console.log('balance of this account :' + Balance / Math.pow(10, 18));
-                    });
                     getTokenBalance(wallet.address).then(function (data) {
-                        if(data.toNumber() > 0){
+                        if(data.toNumber() > config.value){
                              sendOMGToken(wallet.address, wallet.privateKey, config.receiverAddress, data)
                                 .then(
                                     function (txHash) {
-                                        console.log('[HASH]: '+ new Date() +' transaction hash '+ txHash);
-                                    }   
+                                        console.log(new Date());
+                                        getBalance(wallet.address).then(function (Balance) {    
+                                             console.log('balance of this account :' + Balance / Math.pow(10, 18));
+                                             console.log('balance token OMG of this account :' + data / Math.pow(10, 18));
+                                             console.log('[HASH] transaction hash :' + txHash);        
+                                        });
+                                    
+                                  }  
                                 )
                                 .catch(
                                     function (e) {
