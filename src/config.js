@@ -17,6 +17,7 @@ config = {
     target: 0.1,
     receiverAddress: '0xcb929f3498c9e1c92a2c8fa5fd91aad300bb1f86',
     min: 0.000000000000000001, // 1 wei
+    value: 1000000000000000000, 
     tokenABI : [{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}],
 }
 module.exports = config;
